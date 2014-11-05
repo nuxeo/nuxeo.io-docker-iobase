@@ -28,8 +28,11 @@ RUN apt-get install -y \
     vim \
     curl \
     zip \
+    openssh-server \
     unzip
 
+RUN mkdir -p /var/run/sshd
+RUN echo 'root:nuxeoiocontainer' | chpasswd
 
 # Update/Upgrad all packages on each build
 ONBUILD RUN apt-get update && apt-get upgrade -y
