@@ -28,11 +28,9 @@ RUN apt-get install -y \
     vim \
     curl \
     zip \
-    openssh-server \
     unzip
 
 RUN mkdir -p /var/run/sshd
-RUN echo 'root:nuxeoiocontainer' | chpasswd
 
 # Enable multiverse
 RUN perl -p -i -e "s/universe/universe multiverse/g" /etc/apt/sources.list
