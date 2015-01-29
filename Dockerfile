@@ -34,5 +34,8 @@ RUN apt-get install -y \
 RUN mkdir -p /var/run/sshd
 RUN echo 'root:nuxeoiocontainer' | chpasswd
 
+# Enable multiverse
+RUN perl -p -i -e "s/universe/universe multiverse/g" /etc/apt/sources.list
+
 # Update/Upgrad all packages on each build
 ONBUILD RUN apt-get update && apt-get upgrade -y
