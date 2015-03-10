@@ -1,4 +1,4 @@
-# Nuxeo IO Base image is a ubuntu precise image with all the dependencies needed by Nuxeo Platform
+# Nuxeo IO Base image is a ubuntu trusty image with all the dependencies needed by Nuxeo Platform
 #
 # VERSION               0.0.1
 
@@ -28,12 +28,13 @@ RUN apt-get install -y \
     vim \
     curl \
     zip \
-    unzip
-
-RUN mkdir -p /var/run/sshd
+    unzip \
+    telnet \
+    lsof \
+    tcpdump
 
 # Enable multiverse
 RUN perl -p -i -e "s/universe/universe multiverse/g" /etc/apt/sources.list
 
-# Update/Upgrad all packages on each build
+# Update/Upgrade all packages on each build
 ONBUILD RUN apt-get update && apt-get upgrade -y
